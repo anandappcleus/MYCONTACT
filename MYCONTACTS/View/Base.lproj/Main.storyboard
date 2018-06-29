@@ -38,7 +38,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K9S-nJ-Sap" userLabel="Search Results Table View">
-                                <rect key="frame" x="0.0" y="136" width="375" height="331"/>
+                                <rect key="frame" x="0.0" y="136" width="375" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 <prototypes>
@@ -55,7 +55,7 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kow-Oz-G9i">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode icon" translatesAutoresizingMaskIntoConstraints="NO" id="Kow-Oz-G9i">
                                                     <rect key="frame" x="8" y="8" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="aZX-sE-0Ti"/>
@@ -104,7 +104,7 @@
                             <constraint firstItem="K9S-nJ-Sap" firstAttribute="top" secondItem="zbI-fZ-VJZ" secondAttribute="bottom" id="Fgx-AB-1eg"/>
                             <constraint firstItem="K9S-nJ-Sap" firstAttribute="leading" secondItem="fpJ-XV-x4C" secondAttribute="leading" id="LsF-0d-Bx0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zbI-fZ-VJZ" secondAttribute="trailing" constant="-8" id="aSo-ke-hny"/>
-                            <constraint firstItem="Eu2-Sw-m0Q" firstAttribute="top" secondItem="K9S-nJ-Sap" secondAttribute="bottom" constant="200" id="c76-98-vkP"/>
+                            <constraint firstItem="Eu2-Sw-m0Q" firstAttribute="top" secondItem="K9S-nJ-Sap" secondAttribute="bottom" id="c76-98-vkP"/>
                             <constraint firstItem="zbI-fZ-VJZ" firstAttribute="leading" secondItem="fpJ-XV-x4C" secondAttribute="leadingMargin" constant="-8" id="h2m-Rr-eeP"/>
                             <constraint firstItem="zbI-fZ-VJZ" firstAttribute="top" secondItem="nwH-C5-EkZ" secondAttribute="bottom" constant="16" id="ytt-Fe-GWO"/>
                         </constraints>
@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCc-NY-HKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="945" y="158"/>
+            <point key="canvasLocation" x="944.79999999999995" y="157.87106446776613"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GL8-U4-psS">

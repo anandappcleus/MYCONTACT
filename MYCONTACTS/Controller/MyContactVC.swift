@@ -67,11 +67,10 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         {
             //To fetch data from DB
             let realm = try? Realm()
-            let contactDetails = realm?.objects(Contact.self)
-            
-           
-            
-            
+            let contactDetails = realm?.objects(Contact.self).toArray(ofType: Contact.self) as? [Contact]
+
+            self.searchResults = contactDetails!
+
             
             self.searchResultsTableView.isHidden = false
             
@@ -99,6 +98,7 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyContactCell") as? MyContactCell
         
         cell?.title.text = self.searchResults[indexPath.row].firstName
+        cell?.value.text = self.searchResults[indexPath.row].email
         
         return cell!
     }
@@ -114,4 +114,16 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
     
 
    
+}
+extension Results {
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for i in 0 ..< count {
+            if let result = self[i] as? T {
+                array.append(result)
+            }
+        }
+        
+        return array
+    }
 }
