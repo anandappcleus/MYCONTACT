@@ -8,14 +8,9 @@
 import UIKit
 import RealmSwift
 
-class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate {
-
-   
-
-    
-    @IBOutlet weak var SearchBar: UISearchBar!
-    
-    @IBOutlet weak var backButton: UIBarButtonItem!
+class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate
+{
+ @IBOutlet weak var SearchBar: UISearchBar!
     
     @IBOutlet weak var searchResultsTableView: UITableView!
     
@@ -67,11 +62,19 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         {
             //To fetch data from DB
             let realm = try? Realm()
-            let contactDetails = realm?.objects(Contact.self).toArray(ofType: Contact.self) as? [Contact]
-
-            self.searchResults = contactDetails!
-
             
+            //Converting Realm Object to Array Object
+            let contactDetails = realm?.objects(Contact.self).toArray(ofType: Contact.self)
+           
+            //comapring string based on search string
+            let searchResult = contactDetails?.filter{ $0.firstName.caseInsensitiveCompare(searchText) == .orderedSame }.first
+            
+            if searchResult != nil
+            {
+                self.searchResults = [searchResult!]
+            }
+            
+           
             self.searchResultsTableView.isHidden = false
             
         }
@@ -83,7 +86,7 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         }
     }
     
-    
+
     
     
     //MARK: UITableViewDataSource
@@ -127,3 +130,5 @@ extension Results {
         return array
     }
 }
+
+
