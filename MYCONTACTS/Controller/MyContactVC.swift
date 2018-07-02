@@ -14,7 +14,7 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
     
     @IBOutlet weak var searchResultsTableView: UITableView!
     
-    
+     let realm = try? Realm()
     var searchResults = [Contact]()
     {
         didSet
@@ -58,20 +58,20 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        if searchText.characters.count >= 2
+        if searchText.characters.count >= 3
         {
-            //To fetch data from DB
-            let realm = try? Realm()
+            //To fetch data from DB and Converting Realm Object to Array Object
+           // let realm = try? Realm()
             
-            //Converting Realm Object to Array Object
-            let contactDetails = realm?.objects(Contact.self).toArray(ofType: Contact.self)
+            
+            let contactDetails = self.realm?.objects(Contact.self).toArray(ofType: Contact.self)
            
             //comapring string based on search string
-            let searchResult = contactDetails?.filter{ $0.firstName.caseInsensitiveCompare(searchText) == .orderedSame }.first
+            let searchResult = contactDetails?.filter{ $0.firstName.caseInsensitiveCompare(searchText) == .orderedSame }
             
             if searchResult != nil
             {
-                self.searchResults = [searchResult!]
+                self.searchResults = searchResult!
             }
             
            
@@ -82,7 +82,7 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         {
             self.searchResults = []
             self.searchResultsTableView.isHidden = true
-            
+
         }
     }
     
@@ -112,6 +112,51 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         self.SearchBar.resignFirstResponder()
         
         
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?
+    {
+        // Edit
+        let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+            
+            let addContactTVC = self.storyboard?.instantiateViewController(withIdentifier: "AddContactTVC") as! AddContactTVC
+            if let user = self.realm?.objects(Contact.self).toArray(ofType: Contact.self)[indexPath.row]
+            {
+                
+                addContactTVC.userDetail = user
+                
+                //print(realm.objects(User.self).first)
+            }
+            self.navigationController?.pushViewController(addContactTVC, animated: true)
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                tableView.endEditing(true)
+            })
+        })
+        
+        editAction.backgroundColor = UIColor(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
+        
+        // Delete
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
+            
+           // let realm = try? Realm()
+            if let user = self.realm?.objects(Contact.self)[indexPath.row]
+            {
+                try! self.realm?.write {
+                    self.realm?.delete(user)
+                }
+                self.searchResults = (self.realm?.objects(Contact.self).toArray(ofType: Contact.self))!
+                
+            }
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                tableView.endEditing(true)
+            })
+        })
+        
+        deleteAction.backgroundColor = UIColor.red
+        
+        return [editAction,deleteAction]
     }
     
     
