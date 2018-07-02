@@ -14,7 +14,8 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
     
     @IBOutlet weak var searchResultsTableView: UITableView!
     
-     let realm = try? Realm()
+    let realm = try? Realm()
+    
     var searchResults = [Contact]()
     {
         didSet
@@ -26,7 +27,6 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         }
     }
     
-    var filteredData: [String]!
 
     
     override func viewDidLoad()
@@ -42,18 +42,7 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         
     }
     
-    
-    
-    
-    @IBAction func backButtonAction(_ sender: UIBarButtonItem) {
-        
-        _ = self.navigationController?.popViewController(animated: true)
-    }
-    @IBAction func closeButtonAction(_ sender: UIButton)
-    {
-        _ = self.navigationController?.popViewController(animated: true)
-    }
-    
+  
     //MARK: Search Bar Delegate Method
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
@@ -61,8 +50,6 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         if searchText.characters.count >= 3
         {
             //To fetch data from DB and Converting Realm Object to Array Object
-           // let realm = try? Realm()
-            
             
             let contactDetails = self.realm?.objects(Contact.self).toArray(ofType: Contact.self)
            
@@ -89,8 +76,7 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
 
     
     
-    //MARK: UITableViewDataSource
-    
+    //MARK: UITableViewDataSource    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return self.searchResults.count
@@ -100,8 +86,9 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyContactCell") as? MyContactCell
         
-        cell?.title.text = self.searchResults[indexPath.row].firstName
+        cell?.title.text = "\(self.searchResults[indexPath.row].firstName) \(self.searchResults[indexPath.row].lastName)"
         cell?.value.text = self.searchResults[indexPath.row].email
+        cell?.countryCodeLabel.text = self.searchResults[indexPath.row].phone
         
         return cell!
     }
@@ -120,12 +107,12 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         let editAction = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
             
             let addContactTVC = self.storyboard?.instantiateViewController(withIdentifier: "AddContactTVC") as! AddContactTVC
+            addContactTVC.title = "ADD CONTACT"
             if let user = self.realm?.objects(Contact.self).toArray(ofType: Contact.self)[indexPath.row]
             {
                 
                 addContactTVC.userDetail = user
                 
-                //print(realm.objects(User.self).first)
             }
             self.navigationController?.pushViewController(addContactTVC, animated: true)
             
@@ -139,7 +126,6 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
         // Delete
         let deleteAction = UITableViewRowAction(style: .default, title: "Delete", handler: { (action, indexPath) in
             
-           // let realm = try? Realm()
             if let user = self.realm?.objects(Contact.self)[indexPath.row]
             {
                 try! self.realm?.write {

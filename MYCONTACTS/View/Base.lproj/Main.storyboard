@@ -55,7 +55,7 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode icon" translatesAutoresizingMaskIntoConstraints="NO" id="Kow-Oz-G9i">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="Kow-Oz-G9i">
                                                     <rect key="frame" x="8" y="8" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="aZX-sE-0Ti"/>
@@ -71,11 +71,22 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4b-Ks-cV5" userLabel="countryCode">
+                                                    <rect key="frame" x="94" y="32" width="0.0" height="0.0"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="TUU-m0-wek"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="y4b-Ks-cV5" firstAttribute="leading" secondItem="3Zr-Vv-jsy" secondAttribute="leading" id="0rG-dp-SwC"/>
                                                 <constraint firstItem="3Zr-Vv-jsy" firstAttribute="leading" secondItem="FDC-Fs-vsW" secondAttribute="leading" id="1hq-wv-ymC"/>
                                                 <constraint firstItem="Kow-Oz-G9i" firstAttribute="leading" secondItem="ypT-Ki-7JX" secondAttribute="leading" constant="8" id="3BD-Lh-h6j"/>
+                                                <constraint firstItem="y4b-Ks-cV5" firstAttribute="top" secondItem="3Zr-Vv-jsy" secondAttribute="bottom" constant="14" id="3tc-hc-mAc"/>
                                                 <constraint firstAttribute="trailing" secondItem="3Zr-Vv-jsy" secondAttribute="trailing" constant="8" id="9RP-iP-WRM"/>
                                                 <constraint firstItem="FDC-Fs-vsW" firstAttribute="leading" secondItem="Kow-Oz-G9i" secondAttribute="trailing" constant="16" id="Ty8-ES-ekP"/>
                                                 <constraint firstItem="3Zr-Vv-jsy" firstAttribute="top" secondItem="FDC-Fs-vsW" secondAttribute="bottom" constant="10" id="kHa-8K-CS7"/>
@@ -85,6 +96,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="countryCodeLabel" destination="y4b-Ks-cV5" id="GBB-yT-SII"/>
                                             <outlet property="thumbnail" destination="Kow-Oz-G9i" id="goc-Zg-yf3"/>
                                             <outlet property="title" destination="FDC-Fs-vsW" id="J46-1e-HtJ"/>
                                             <outlet property="value" destination="3Zr-Vv-jsy" id="Lcc-UF-iJd"/>
@@ -112,6 +124,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="MY CONTACTS" id="orc-UJ-bok">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0nh-yo-Dji">
+                            <color key="tintColor" red="0.30196078430000001" green="0.74901960779999999" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="YGY-29-yAz" kind="show" id="aF9-4u-vtD"/>
                             </connections>
@@ -154,7 +167,8 @@
                             <rect key="frame" x="0.0" y="400" width="375" height="45"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.30196078430000001" green="0.74901960779999999" blue="0.062745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <state key="normal" title="Add Contact">
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                            <state key="normal" title="ADD CONTACT">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -171,8 +185,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode icon" translatesAutoresizingMaskIntoConstraints="NO" id="qgl-Mf-wYB">
-                                                    <rect key="frame" x="127.5" y="10" width="120" height="120"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="man" translatesAutoresizingMaskIntoConstraints="NO" id="qgl-Mf-wYB">
+                                                    <rect key="frame" x="127.5" y="14" width="120" height="120"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="Vav-Ck-Jqz"/>
                                                         <constraint firstAttribute="height" constant="120" id="pbB-TK-INs"/>
@@ -180,10 +194,11 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qgl-Mf-wYB" firstAttribute="top" secondItem="nWb-FC-cfh" secondAttribute="top" constant="10" id="KaY-La-aTn"/>
+                                                <constraint firstItem="qgl-Mf-wYB" firstAttribute="top" secondItem="nWb-FC-cfh" secondAttribute="top" constant="14" id="KaY-La-aTn"/>
                                                 <constraint firstItem="qgl-Mf-wYB" firstAttribute="centerX" secondItem="nWb-FC-cfh" secondAttribute="centerX" id="QaU-uY-e3P"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -198,7 +213,8 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jDh-ZI-SOI">
                                                     <rect key="frame" x="15" y="15" width="74" height="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -218,7 +234,8 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAw-1Q-KlR">
                                                     <rect key="frame" x="15" y="15" width="73" height="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -238,6 +255,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-MU-h4u">
                                                     <rect key="frame" x="15" y="15" width="38.5" height="17"/>
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -258,6 +276,7 @@
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1B-4F-VQR">
                                                     <rect key="frame" x="15" y="15" width="45" height="17"/>
+                                                    <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -276,14 +295,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f11-ZC-lRp">
-                                                    <rect key="frame" x="15" y="15" width="59" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f11-ZC-lRp">
+                                                    <rect key="frame" x="15" y="15" width="52" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxh-Nk-uTz">
-                                                    <rect key="frame" x="44" y="39" width="1" height="1"/>
+                                                    <rect key="frame" x="40.5" y="37.5" width="1" height="1"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="Y9Z-B4-pde"/>
@@ -333,7 +352,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="h1i-xS-qvx">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" textLabel="Id0-tT-Mvc" rowHeight="50" style="IBUITableViewCellStyleDefault" id="Fs1-FP-zTr">
                                 <rect key="frame" x="0.0" y="28" width="300" height="50"/>
@@ -345,12 +364,14 @@
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Id0-tT-Mvc">
                                             <rect key="frame" x="16" y="0.0" width="268" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -384,6 +405,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="qrcode icon" width="200" height="200"/>
+        <image name="man" width="128" height="128"/>
     </resources>
 </document>

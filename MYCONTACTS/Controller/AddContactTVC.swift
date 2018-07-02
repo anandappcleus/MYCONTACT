@@ -27,13 +27,12 @@ class AddContactTVC: UITableViewController,UIPopoverPresentationControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //let realm = try? Realm()
         profileImage.layer.borderWidth = 1.0
         profileImage.layer.masksToBounds = false
         profileImage.layer.borderColor = UIColor.white.cgColor
         profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
         profileImage.clipsToBounds = true
-        
+        self.navigationItem.title = "ADD CONTACT"
         UIsetup()
         
     }
@@ -142,12 +141,8 @@ class AddContactTVC: UITableViewController,UIPopoverPresentationControllerDelega
                        
                         
                         DispatchQueue.main.async {
-                            self.firstNameLabel.text = ""
-                            self.lastNameLabel.text = ""
-                            self.phoneLabel.text = ""
-                            self.emailLabel.text = ""
-                            self.countryCodeLabel.text = ""
-                            
+
+                            self.navigationController?.popViewController(animated: true)
                             
                         }
                         
@@ -161,22 +156,13 @@ class AddContactTVC: UITableViewController,UIPopoverPresentationControllerDelega
                 let cancelAction = UIAlertAction(title: "No", style: .cancel) { (_) in
                     
                     DispatchQueue.main.async {
-                        self.firstNameLabel.text = ""
-                        self.lastNameLabel.text = ""
-                        self.phoneLabel.text = ""
-                        self.emailLabel.text = ""
-                        self.countryCodeLabel.text = ""
                         
                         
                     }
                     
                 }
                 
-                
-                
-                
-                
-                
+               
                 self.alert.addAction(saveAction)
                 
                 self.alert.addAction(cancelAction)
@@ -206,7 +192,6 @@ class AddContactTVC: UITableViewController,UIPopoverPresentationControllerDelega
             let countryCodeTVC = segue.destination as! CountryCodeTVC
             countryCodeTVC.popoverPresentationController!.delegate = self
             countryCodeTVC.preferredContentSize = CGSize(width: 300,height: 234)
-            //countryCodeTVC.date = self.selectedDOB
             countryCodeTVC.delegate = self
         }
     }
