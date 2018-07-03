@@ -54,8 +54,8 @@ class MyContactVC: UIViewController,UISearchBarDelegate,UITableViewDataSource,UI
             let contactDetails = self.realm?.objects(Contact.self).toArray(ofType: Contact.self)
            
             //comapring string based on search string
-            let searchResult = contactDetails?.filter{ $0.firstName.caseInsensitiveCompare(searchText) == .orderedSame }
-            
+//            let searchResult = contactDetails?.filter{ $0.firstName.caseInsensitiveCompare(searchText) == .orderedSame }
+            let searchResult = contactDetails?.filter{ $0.firstName.lowercased().contains(searchText.lowercased())}
             if searchResult != nil
             {
                 self.searchResults = searchResult!
